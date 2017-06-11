@@ -4,18 +4,18 @@ import { NavController, ModalController } from 'ionic-angular';
 import { ItemCreatePage } from '../item-create/item-create';
 import { ItemDetailPage } from '../item-detail/item-detail';
 
-import { Items } from '../../providers/providers';
+import { CityServices } from '../../providers/providers';
 
-import { Item } from '../../models/item';
+import { CityService } from '../../models/item';
 
 @Component({
   selector: 'page-list-master',
   templateUrl: 'list-master.html'
 })
 export class ListMasterPage {
-  currentItems: Item[];
+  currentItems: CityService[];
 
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public items: CityServices, public modalCtrl: ModalController) {
     this.currentItems = this.items.query();
   }
 
@@ -49,7 +49,7 @@ export class ListMasterPage {
   /**
    * Navigate to the detail page for this item.
    */
-  openItem(item: Item) {
+  openItem(item: CityService) {
     this.navCtrl.push(ItemDetailPage, {
       item: item
     });

@@ -1,60 +1,55 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
-import { Item } from '../../models/item';
+import { CityService } from '../../models/item';
 
 @Injectable()
-export class Items {
-  items: Item[] = [];
+export class CityServices {
+  items: CityService[] = [];
 
   defaultItem: any = {
-    "name": "Burt Bear",
+    "name": "Poda de árvore",
     "profilePic": "assets/img/speakers/bear.jpg",
-    "about": "Burt is a Bear.",
+    "about": "Poda.",
   };
 
 
   constructor(public http: Http) {
     let items = [
       {
-        "name": "Burt Bear",
-        "profilePic": "assets/img/speakers/bear.jpg",
-        "about": "Burt is a Bear."
+        "name": "Poda de árvore",
+        "profilePic": "assets/img/services/tree.png",
+        "about": "Poda.",
       },
       {
-        "name": "Charlie Cheetah",
-        "profilePic": "assets/img/speakers/cheetah.jpg",
-        "about": "Charlie is a Cheetah."
+        "name": "Corte de árvore",
+        "profilePic": "assets/img/services/tree.png",
+        "about": "Corte de árvore."
       },
       {
-        "name": "Donald Duck",
-        "profilePic": "assets/img/speakers/duck.jpg",
-        "about": "Donald is a Duck."
+        "name": "Plantio de árvore",
+        "profilePic": "assets/img/services/plant-tree.png",
+        "about": "Plantio de árvore."
       },
       {
-        "name": "Eva Eagle",
-        "profilePic": "assets/img/speakers/eagle.jpg",
-        "about": "Eva is an Eagle."
+        "name": "Denúncia de falta de plantio",
+        "profilePic": "assets/img/services/plant-tree.png",
+        "about": "Denúncia de falta de plantio após supressão."
       },
       {
-        "name": "Ellie Elephant",
-        "profilePic": "assets/img/speakers/elephant.jpg",
-        "about": "Ellie is an Elephant."
+        "name": "Obstrução da via",
+        "profilePic": "assets/img/services/traffic-cone.png",
+        "about": "Obstrução da via por árvores e galhos caídos."
       },
       {
-        "name": "Molly Mouse",
-        "profilePic": "assets/img/speakers/mouse.jpg",
-        "about": "Molly is a Mouse."
-      },
-      {
-        "name": "Paul Puppy",
-        "profilePic": "assets/img/speakers/puppy.jpg",
-        "about": "Paul is a Puppy."
+        "name": "Capinação de mato",
+        "profilePic": "assets/img/services/tulip.png",
+        "about": "Capinação de mato."
       }
     ];
 
     for (let item of items) {
-      this.items.push(new Item(item));
+      this.items.push(new CityService(item));
     }
   }
 
@@ -76,11 +71,11 @@ export class Items {
     });
   }
 
-  add(item: Item) {
+  add(item: CityService) {
     this.items.push(item);
   }
 
-  delete(item: Item) {
+  delete(item: CityService) {
     this.items.splice(this.items.indexOf(item), 1);
   }
 }

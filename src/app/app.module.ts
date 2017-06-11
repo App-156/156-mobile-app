@@ -22,7 +22,7 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
 
 import { Api } from '../providers/api';
-import { Items } from '../mocks/providers/items';
+import { CityServices } from '../mocks/providers/items';
 import { Settings } from '../providers/settings';
 import { User } from '../providers/user';
 
@@ -106,7 +106,7 @@ export function provideSettings(storage: Storage) {
   ],
   providers: [
     Api,
-    Items,
+    CityServices,
     User,
     Camera,
     GoogleMaps,

@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 
 import { Api } from './api';
 
-import { Item } from '../models/item';
+import { CityService } from '../models/item';
 
 @Injectable()
 export class Items {
@@ -17,10 +17,10 @@ export class Items {
       .map(resp => resp.json());
   }
 
-  add(item: Item) {
+  add(item: CityService) {
   }
 
-  delete(item: Item) {
+  delete(item: CityService) {
   }
 
 }
