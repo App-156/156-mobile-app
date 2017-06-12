@@ -1,7 +1,7 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>{{ 'ITEM_CREATE_TITLE' | translate }}</ion-title>
+  <ion-navbar color="secondary">
+    <ion-title>{{ 'NEW_SERVICE_REQUEST' | translate }}</ion-title>
     <ion-buttons start>
       <button ion-button (click)="cancel()">
         <span color="primary" showWhen="ios">
@@ -37,10 +37,10 @@
     </div>
     <ion-list>
       <ion-item>
-        <ion-input type="text" placeholder="{{ 'ITEM_NAME_PLACEHOLDER' | translate }}" formControlName="name"></ion-input>
+        <ion-textarea placeholder="{{ 'SERVICE_REQUEST_DESCRIPTION' | translate }}" rows="4" name="description"></ion-textarea>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="{{ 'ITEM_ABOUT_PLACEHOLDER' | translate }}" formControlName="about"></ion-input>
+        <ion-input placeholder="Endereço" name="address"></ion-input>
       </ion-item>
     </ion-list>
   </form>
