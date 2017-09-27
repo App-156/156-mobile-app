@@ -8,8 +8,8 @@
   "LOGIN": "Entrar",
   "SIGNUP": "Cadastre-se",
 
-  "TAB1_TITLE": "Itens",
-  "TAB2_TITLE": "Busca",
+  "TAB1_TITLE": "Serviços",
+  "TAB2_TITLE": "Minhas solicitações",
   "TAB3_TITLE": "Configurações",
 
   "MAP_TITLE": "Mapa",
@@ -64,5 +64,11 @@
   "CARDS_TITLE": "Social",
 
   "SEARCH_TITLE": "Busca",
-  "SEARCH_PLACEHOLDER" : "Procure um item da lista, ex: \"Donald Duck\""
+  "SEARCH_PLACEHOLDER" : "Procure um item da lista, ex: \"Serviço\"",
+  
+  "SERVICES_TITLE": "Serviços",
+  "MY_REQUESTS_TITLE": "Minhas solicitações",
+  "NEW_SERVICE_REQUEST_TITLE":"Nova requisição de serviço",
+
+  "SERVICE_REQUEST_DESCRIPTION": "Descreva detalhes de sua solicitação para que possamos ajudar!"
 }
