@@ -52,7 +52,7 @@
   "LIST_MASTER_TITLE": "Itens",
 
   "ITEM_CREATE_TITLE": "Novo Item",
-  "ITEM_CREATE_CHOOSE_IMAGE": "Adicionar Imagem",
+  "ITEM_CREATE_CHOOSE_IMAGE": "Adicionar Foto",
 
   "ITEM_NAME_PLACEHOLDER" : "Nome",
   "ITEM_ABOUT_PLACEHOLDER" : "Sobre",
@@ -68,7 +68,8 @@
   
   "SERVICES_TITLE": "Serviços",
   "MY_REQUESTS_TITLE": "Minhas solicitações",
-  "NEW_SERVICE_REQUEST_TITLE":"Nova requisição de serviço",
+  "NEW_SERVICE_REQUEST_TITLE":"Abrir solicitação",
 
-  "SERVICE_REQUEST_DESCRIPTION": "Descreva detalhes de sua solicitação para que possamos ajudar!"
+  "SERVICE_REQUEST_DESCRIPTION": "Detalhes de sua solicitação",
+  "SERVICE_REQUEST_SEND": "Criar solicitação"
 }

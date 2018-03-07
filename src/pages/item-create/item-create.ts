@@ -1,3 +1,4 @@
+import { CityService } from './../../models/city-service';
 import { CityServices } from './../../mocks/providers/city-services';
 import { Component, ViewChild } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
@@ -19,11 +20,13 @@ export class ItemCreatePage {
 
   form: FormGroup;
 
+  newService: any;
+
   constructor(public navCtrl: NavController, navParams: NavParams, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera, items: CityServices) {
     this.form = formBuilder.group({
       profilePic: [''],
       description: ['', Validators.required],
-      address: [''],
+      address: ['', Validators.required],
     });
 
     this.item = navParams.get('item') || items.defaultItem;
@@ -54,6 +57,10 @@ export class ItemCreatePage {
     }
   }
 
+  createItem() {
+
+  }
+
   processWebImage(event) {
     let reader = new FileReader();
     reader.onload = (readerEvent) => {
@@ -73,7 +80,12 @@ export class ItemCreatePage {
    * The user cancelled, so we dismiss without sending data back.
    */
   cancel() {
+    this.item = {};
     this.viewCtrl.dismiss();
+  }
+
+  isFormValid() {
+    return this.form.valid;
   }
 
   /**
