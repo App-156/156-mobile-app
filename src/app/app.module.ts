@@ -22,7 +22,7 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
 
 import { Api } from '../providers/api';
-import { CityServices } from '../mocks/providers/items';
+import { CityServices } from '../mocks/providers/city-services';
 import { Settings } from '../providers/settings';
 import { User } from '../providers/user';
 

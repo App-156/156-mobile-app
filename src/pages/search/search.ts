@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { ItemDetailPage } from '../item-detail/item-detail';
 
-import { CityService } from '../../models/item';
+import { CityService } from '../../models/city-service';
 
 import { CityServices } from '../../providers/providers';
 

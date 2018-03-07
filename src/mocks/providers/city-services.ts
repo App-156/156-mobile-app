@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
-import { CityService } from '../../models/item';
+import { CityService } from '../../models/city-service';
 
 @Injectable()
 export class CityServices {

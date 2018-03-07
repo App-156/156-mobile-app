@@ -34,13 +34,16 @@
         </div>
       </div>
       <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
+      <div>{{item.name}}</div>
     </div>
     <ion-list>
       <ion-item>
-        <ion-textarea placeholder="{{ 'SERVICE_REQUEST_DESCRIPTION' | translate }}" rows="4" name="description"></ion-textarea>
+        <ion-label floating>{{ 'SERVICE_REQUEST_DESCRIPTION' | translate }}</ion-label>
+        <ion-textarea rows="4" name="description" floating></ion-textarea>
       </ion-item>
       <ion-item>
-        <ion-input placeholder="Endereço" name="address"></ion-input>
+        <ion-label floating>Endereço</ion-label>
+        <ion-input name="address"></ion-input>
       </ion-item>
     </ion-list>
   </form>

@@ -1,6 +1,7 @@
+import { CityServices } from './../../mocks/providers/city-services';
 import { Component, ViewChild } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { NavController, ViewController } from 'ionic-angular';
+import { NavController, ViewController, NavParams } from 'ionic-angular';
 
 import { Camera } from '@ionic-native/camera';
 
@@ -18,12 +19,14 @@ export class ItemCreatePage {
 
   form: FormGroup;
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera) {
+  constructor(public navCtrl: NavController, navParams: NavParams, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera, items: CityServices) {
     this.form = formBuilder.group({
       profilePic: [''],
       description: ['', Validators.required],
-      address: ['']
+      address: [''],
     });
+
+    this.item = navParams.get('item') || items.defaultItem;
 
     // Watch the form for changes, and
     this.form.valueChanges.subscribe((v) => {
