@@ -20,6 +20,7 @@ export class TabsPage {
     translateService.get(['TAB1_TITLE', 'TAB2_TITLE']).subscribe(values => {
       this.tab1Title = values['TAB1_TITLE'];
       this.tab2Title = values['TAB2_TITLE'];
+      this.tab2Title = values['TAB2_TITLE'];
     });
   }
 }

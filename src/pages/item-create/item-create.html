@@ -24,6 +24,10 @@
 
 
 <ion-content>
+  <ion-item-divider>
+      <h2 ion-text color="secondary">{{item.name}}</h2>
+      <p ion-text>{{item.about}}</p>
+  </ion-item-divider>
   <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
     <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
     <div class="profile-image-wrapper" (click)="getPicture()">
@@ -35,9 +39,6 @@
       </div>
       <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
     </div>
-    <ion-item-divider>
-      <div>{{item.name}}</div>
-    </ion-item-divider>
     <ion-list>
       <ion-item>
         <ion-label floating>{{ 'SERVICE_REQUEST_DESCRIPTION' | translate }}</ion-label>
@@ -48,10 +49,13 @@
         <ion-input formControlName="address" required></ion-input>
       </ion-item>
     </ion-list>
-    <ion-row>
-      <button ion-button [round]=true [disabled]="!isReadyToSave" (ngSubmit)="createItem()">
+    
+  <ion-row>
+    <ion-col align-self-center>
+    <button ion-button [round]=true [disabled]="!isReadyToSave" item-right (ngSubmit)="createItem()">
           {{'SERVICE_REQUEST_SEND' | translate }}
       </button>
-    </ion-row>
-  </form>
+    </ion-col>  
+  </ion-row>
+    </form>
 </ion-content>
