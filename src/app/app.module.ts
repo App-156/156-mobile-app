@@ -27,7 +27,16 @@ import { Settings } from '../providers/settings';
 import { User } from '../providers/user';
 
 import { Camera } from '@ionic-native/camera';
-import { GoogleMaps } from '@ionic-native/google-maps';
+// import {
+//   GoogleMaps,
+//   GoogleMap,
+//   GoogleMapsEvent,
+//   CameraPosition,
+//   MarkerOptions,
+//   Marker
+//  } from '@ionic-native/google-maps';
+
+import { Component } from "@angular/core/";
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
@@ -109,7 +118,7 @@ export function provideSettings(storage: Storage) {
     CityServices,
     User,
     Camera,
-    GoogleMaps,
+    //GoogleMaps,
     SplashScreen,
     StatusBar,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
