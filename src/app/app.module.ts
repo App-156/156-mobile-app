@@ -12,7 +12,6 @@ import { ItemCreatePage } from '../pages/item-create/item-create';
 import { ItemDetailPage } from '../pages/item-detail/item-detail';
 import { ListMasterPage } from '../pages/list-master/list-master';
 import { LoginPage } from '../pages/login/login';
-import { MapPage } from '../pages/map/map';
 import { MenuPage } from '../pages/menu/menu';
 import { SearchPage } from '../pages/search/search';
 import { SettingsPage } from '../pages/settings/settings';
@@ -27,14 +26,7 @@ import { Settings } from '../providers/settings';
 import { User } from '../providers/user';
 
 import { Camera } from '@ionic-native/camera';
-// import {
-//   GoogleMaps,
-//   GoogleMap,
-//   GoogleMapsEvent,
-//   CameraPosition,
-//   MarkerOptions,
-//   Marker
-//  } from '@ionic-native/google-maps';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { Component } from "@angular/core/";
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -73,7 +65,6 @@ export function provideSettings(storage: Storage) {
     ItemDetailPage,
     ListMasterPage,
     LoginPage,
-    MapPage,
     MenuPage,
     SearchPage,
     SettingsPage,
@@ -104,7 +95,6 @@ export function provideSettings(storage: Storage) {
     ItemDetailPage,
     ListMasterPage,
     LoginPage,
-    MapPage,
     MenuPage,
     SearchPage,
     SettingsPage,
@@ -117,6 +107,7 @@ export function provideSettings(storage: Storage) {
     Api,
     CityServices,
     User,
+    Geolocation,
     Camera,
     //GoogleMaps,
     SplashScreen,
