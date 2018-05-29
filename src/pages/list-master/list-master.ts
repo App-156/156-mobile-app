@@ -1,3 +1,4 @@
+import { Categories } from './../../mocks/providers/categories';
 import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 
@@ -5,7 +6,7 @@ import { ItemCreatePage } from '../item-create/item-create';
 import { ItemDetailPage } from '../item-detail/item-detail';
 
 import { CityServices } from '../../providers/providers';
-
+import { Category } from './../../models/category';
 import { CityService } from '../../models/city-service';
 
 @Component({
@@ -14,9 +15,11 @@ import { CityService } from '../../models/city-service';
 })
 export class ListMasterPage {
   currentItems: CityService[];
+  currentCategories: Category[];
 
-  constructor(public navCtrl: NavController, public items: CityServices, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public items: CityServices, public categories: Categories, public modalCtrl: ModalController) {
     this.currentItems = this.items.query();
+    this.currentCategories = this.categories.query();
   }
 
   /**

@@ -1,7 +1,6 @@
 import { MapPage } from './map/map';
 import { ListMasterPage } from './list-master/list-master';
 import { SearchPage } from './search/search';
-import { SettingsPage } from './settings/settings';
 import { TabsPage } from './tabs/tabs';
 import { TutorialPage } from './tutorial/tutorial';
 

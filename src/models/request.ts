@@ -1,4 +1,4 @@
-export class Category {
+export class Request {
     /*public categoryID: number;
     public categoryDescription: string;
     public categoryName: string;*/

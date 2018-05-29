@@ -1,20 +1,19 @@
+import { Requests } from './../mocks/providers/requests';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule, Http } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { Storage, IonicStorageModule } from '@ionic/storage';
+import { Device } from '@ionic-native/device';
 
 import { MyApp } from './app.component';
 
-import { CardsPage } from '../pages/cards/cards';
-import { ContentPage } from '../pages/content/content';
 import { ItemCreatePage } from '../pages/item-create/item-create';
 import { ItemDetailPage } from '../pages/item-detail/item-detail';
 import { ListMasterPage } from '../pages/list-master/list-master';
 import { LoginPage } from '../pages/login/login';
 import { MenuPage } from '../pages/menu/menu';
 import { SearchPage } from '../pages/search/search';
-import { SettingsPage } from '../pages/settings/settings';
 import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
@@ -34,6 +33,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { Categories } from '../providers/providers';
+import { ContentPage } from '../pages/content/content';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -59,19 +60,17 @@ export function provideSettings(storage: Storage) {
 @NgModule({
   declarations: [
     MyApp,
-    CardsPage,
-    ContentPage,
     ItemCreatePage,
     ItemDetailPage,
     ListMasterPage,
     LoginPage,
     MenuPage,
     SearchPage,
-    SettingsPage,
     SignupPage,
     TabsPage,
     TutorialPage,
-    WelcomePage
+    WelcomePage,
+    ContentPage
   ],
   imports: [
     BrowserModule,
@@ -89,15 +88,13 @@ export function provideSettings(storage: Storage) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    CardsPage,
-    ContentPage,
     ItemCreatePage,
     ItemDetailPage,
     ListMasterPage,
     LoginPage,
+    ContentPage,
     MenuPage,
     SearchPage,
-    SettingsPage,
     SignupPage,
     TabsPage,
     TutorialPage,
@@ -107,8 +104,11 @@ export function provideSettings(storage: Storage) {
     Api,
     CityServices,
     User,
+    Device,
     Geolocation,
     Camera,
+    Categories,
+    Requests,
     //GoogleMaps,
     SplashScreen,
     StatusBar,

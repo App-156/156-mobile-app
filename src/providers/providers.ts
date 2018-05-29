@@ -1,3 +1,5 @@
+import { Requests } from './../mocks/providers/requests';
+import { Categories } from './../mocks/providers/categories';
 import { User } from './user';
 import { Api } from './api';
 import { Settings } from './settings';
@@ -7,5 +9,7 @@ export {
 User,
 Api,
 Settings,
-CityServices
+CityServices,
+Categories,
+Requests
 };

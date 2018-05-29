@@ -13,7 +13,6 @@ export class CityServices {
     "about": "Poda.",
   };
 
-
   constructor(public http: Http) {
     let items = [
       {

@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 import { IonicPage } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Device } from '@ionic-native/device';
 
 declare var google;
 
@@ -19,8 +20,9 @@ export class MapPage {
   directionsService = new google.maps.DirectionsService;
   directionsDisplay = new google.maps.DirectionsRenderer;
   markers = [];
+  message = "";
 
-  constructor(public navCtrl: NavController, public platform: Platform, private geolocation: Geolocation) {
+  constructor(public navCtrl: NavController, private device: Device, public platform: Platform, private geolocation: Geolocation) {
     platform.ready().then(() => {
       this.initMap();
     });
@@ -57,6 +59,10 @@ export class MapPage {
     this.markers.push(marker);
   }
   
+  bye() {
+    this.message = "CLICK";
+  }
+
   setMapOnAll(map) {
     for (var i = 0; i < this.markers.length; i++) {
       this.markers[i].setMap(map);
