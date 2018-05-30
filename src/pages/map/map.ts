@@ -1,5 +1,5 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, Platform } from 'ionic-angular';
+import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
+import { NavController, Platform, LoadingController } from 'ionic-angular';
 import { IonicPage } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Device } from '@ionic-native/device';
@@ -21,11 +21,34 @@ export class MapPage {
   directionsDisplay = new google.maps.DirectionsRenderer;
   markers = [];
   message = "";
+  counter = 0;
+  
+  GoogleAutocomplete = new google.maps.places.AutocompleteService();
+  autocomplete = { input: '' };
+  autocompleteItems:any;
 
-  constructor(public navCtrl: NavController, private device: Device, public platform: Platform, private geolocation: Geolocation) {
+  loading: any;
+  geocoder: any;
+  
+  constructor(
+    public navCtrl: NavController,
+    private device: Device,
+    private zone: NgZone,
+    public platform: Platform,
+    private geolocation: Geolocation,
+    public loadingCtrl: LoadingController
+  ) {
     platform.ready().then(() => {
       this.initMap();
     });
+
+    this.autocomplete = { input: '' };
+    this.autocompleteItems = [];
+
+    this.geocoder = new google.maps.Geocoder;
+    this.markers = [];
+
+    this.loading = this.loadingCtrl.create();
   }
 
   ionViewDidLoad(){
@@ -40,27 +63,76 @@ export class MapPage {
         center: mylocation
       });
     });
+    
     let watch = this.geolocation.watchPosition();
     watch.subscribe((data) => {
       this.deleteMarkers();
       let updatelocation = new google.maps.LatLng(data.coords.latitude,data.coords.longitude);
-      let image = 'assets/imgs/blue-bike.png';
-      this.addMarker(updatelocation,image);
+      
+      this.addMarker(updatelocation, true);
       this.setMapOnAll(this.map);
     });
   }
 
-  addMarker(location, image) {
+  tryGeolocation(){
+    this.loading.present();
+    this.clearMarkers();//remove previous markers
+    this.geolocation.getCurrentPosition().then((resp) => {
+      let marker = new google.maps.Marker({
+        position: resp.coords,
+        map: this.map,
+        title: 'I am here!'
+      });
+      this.markers.push(marker);
+      this.map.setCenter(resp.coords);
+      this.loading.dismiss();
+
+    }).catch((error) => {
+      console.log('Error getting location', error);
+      this.loading.dismiss();
+    });
+  }
+
+  addMarker(location, isDraggable) {
     let marker = new google.maps.Marker({
       position: location,
       map: this.map,
-      icon: image
+      draggable: isDraggable
     });
     this.markers.push(marker);
   }
   
-  bye() {
-    this.message = "CLICK";
+  updateSearchResults(){
+    if (this.autocomplete.input == '') {
+      this.autocompleteItems = [];
+      return;
+    }
+
+    this.GoogleAutocomplete.getPlacePredictions({ input: this.autocomplete.input },
+    (predictions, status) => {
+      this.autocompleteItems = [];
+      this.zone.run(() => {
+        predictions.forEach((prediction) => {
+          this.autocompleteItems.push(prediction);
+        });
+      });
+    });
+  }
+
+  selectSearchResult(item){
+    this.clearMarkers();
+    this.autocompleteItems = [];
+  
+    this.geocoder.geocode({'placeId': item.place_id}, (results, status) => {
+      if(status === 'OK' && results[0]){
+        let marker = new google.maps.Marker({
+          position: results[0].geometry.location,
+          map: this.map,
+        });
+        this.markers.push(marker);
+        this.map.setCenter(results[0].geometry.location);
+      }
+    })
   }
 
   setMapOnAll(map) {
@@ -77,19 +149,4 @@ export class MapPage {
     this.clearMarkers();
     this.markers = [];
   }
-
-  calculateAndDisplayRoute() {
-    this.directionsService.route({
-      origin: this.start,
-      destination: this.end,
-      travelMode: 'DRIVING'
-    }, (response, status) => {
-      if (status === 'OK') {
-        this.directionsDisplay.setDirections(response);
-      } else {
-        window.alert('Directions request failed due to ' + status);
-      }
-    });
-  }
-
 }
