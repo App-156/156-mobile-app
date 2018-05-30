@@ -1,8 +1,9 @@
 import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
-import { NavController, Platform, LoadingController } from 'ionic-angular';
+import { NavController, Platform, LoadingController, ModalController } from 'ionic-angular';
 import { IonicPage, AlertController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Device } from '@ionic-native/device';
+import { ItemCreatePage } from '../item-create/item-create';
 
 declare var google;
 
@@ -27,6 +28,12 @@ export class MapPage {
   autocomplete = { input: '' };
   autocompleteItems:any;
 
+  defaultItem: any = {
+    "name": "Poda de árvore",
+    "profilePic": "assets/img/speakers/bear.jpg",
+    "about": "Poda.",
+  };
+
   loading: any;
   geocoder: any;
   
@@ -37,7 +44,8 @@ export class MapPage {
     public platform: Platform,
     private geolocation: Geolocation,
     public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public modalCtrl: ModalController
   ) {
     platform.ready().then(() => {
       this.initMap();
@@ -90,12 +98,22 @@ export class MapPage {
           text: 'É o endereço!',
           handler: () => {
             console.log('É o endereço!');
+            this.addItem(this.defaultItem);            
           }
         }        
       ]
     });
     alert.present();
   }
+
+
+addItem(item: any) {
+  let addModal = this.modalCtrl.create(ItemCreatePage, {
+    item: item
+  } );
+  
+  addModal.present();
+}
 
   tryGeolocation(){
     this.loading.present();
