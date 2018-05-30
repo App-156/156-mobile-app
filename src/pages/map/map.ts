@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { NavController, Platform, LoadingController } from 'ionic-angular';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, AlertController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Device } from '@ionic-native/device';
 
@@ -36,7 +36,8 @@ export class MapPage {
     private zone: NgZone,
     public platform: Platform,
     private geolocation: Geolocation,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController
   ) {
     platform.ready().then(() => {
       this.initMap();
@@ -72,6 +73,28 @@ export class MapPage {
       this.addMarker(updatelocation, true);
       this.setMapOnAll(this.map);
     });
+  }
+
+  newRequest() { 
+     let alert = this.alertCtrl.create({
+      title: 'Localização',
+      message: 'Você confirmar que o endereço da solicitação é',
+      buttons: [
+        {
+          text: 'Não',
+          handler: () => {
+            console.log('Não');
+          }
+        },
+        {
+          text: 'É o endereço!',
+          handler: () => {
+            console.log('É o endereço!');
+          }
+        }        
+      ]
+    });
+    alert.present();
   }
 
   tryGeolocation(){
