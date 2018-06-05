@@ -1,3 +1,4 @@
+import { RequestDetailPage } from './../pages/request-detail/request-detail';
 import { Requests } from './../mocks/providers/requests';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -69,7 +70,8 @@ export function provideSettings(storage: Storage) {
     TabsPage,
     TutorialPage,
     WelcomePage,
-    ContentPage
+    ContentPage,
+    RequestDetailPage
   ],
   imports: [
     BrowserModule,
@@ -97,7 +99,8 @@ export function provideSettings(storage: Storage) {
     SignupPage,
     TabsPage,
     TutorialPage,
-    WelcomePage
+    WelcomePage,
+    RequestDetailPage
   ],
   providers: [
     Api,
