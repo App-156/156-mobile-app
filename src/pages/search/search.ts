@@ -1,12 +1,9 @@
+import { RequestDetailPage } from './../request-detail/request-detail';
+import { Requests } from './../../mocks/providers/requests';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { ItemDetailPage } from '../item-detail/item-detail';
-
-import { CityService } from '../../models/city-service';
-
-import { CityServices } from '../../providers/providers';
-
 
 @Component({
   selector: 'page-search',
@@ -16,7 +13,7 @@ export class SearchPage {
   
   currentItems: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public items: CityServices) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public items: Requests) { }
 
   /**
    * Perform a service for the proper items.
@@ -28,15 +25,15 @@ export class SearchPage {
       return;
     }
     this.currentItems = this.items.query({
-      name: val
+      description: val
     });
   }
 
   /**
    * Navigate to the detail page for this item.
    */
-  openItem(item: CityService) {
-    this.navCtrl.push(ItemDetailPage, {
+  openItem(item: Request) {
+    this.navCtrl.push(RequestDetailPage, {
       item: item
     });
   }

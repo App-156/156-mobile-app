@@ -7,62 +7,55 @@ export class Requests {
   items: Request[] = [];
 
   defaultItem: any = {
-    "name": "Poda de árvore",
-    "profilePic": "assets/img/speakers/bear.jpg",
-    "about": "Poda.",
+    "id": 1,
+    "cityhallservice": { 
+      "name": "Corte de árvore",
+      "profilePic": "assets/img/services/tree.png",
+      "about": "Corte de árvore."
+    },
+    "description": "A árvore está ficando oca por dentro, favor realizar corte por segurança.",
+    "date": "15/04/2018",
+    "image": "assets/img/services/brokentree.png",
+    "status": "Aberto",
+    "response": "",
+    "address": "Rua João da Silva, 123",
+    "longitude": 12.5,
+    "latitude": 15.6
   };
 
   constructor(public http: Http) {
     let items = [
       {
-        "name": "Arborismo",
-        "profilePic": "assets/img/services/tree.png",
-        "services": [
-          {
-            "name": "Poda de árvore",
-            "profilePic": "assets/img/services/tree.png",
-            "about": "Poda.",
-          },
-          {
-            "name": "Corte de árvore",
-            "profilePic": "assets/img/services/tree.png",
-            "about": "Corte de árvore."
-          },
-          {
-            "name": "Plantio de árvore",
-            "profilePic": "assets/img/services/plant-tree.png",
-            "about": "Plantio de árvore."
-          },
-          {
-            "name": "Denúncia de falta de plantio",
-            "profilePic": "assets/img/services/plant-tree.png",
-            "about": "Denúncia de falta de plantio após supressão."
-          }
-        ]
+        "id": 1,
+        "cityhallservice": { 
+          "name": "Corte de árvore",
+          "profilePic": "assets/img/services/tree.png",
+          "about": "Corte de árvore."
+        },
+        "description": "A árvore está ficando oca por dentro, favor realizar corte por segurança.",
+        "date": "15/04/2018",
+        "image": "assets/img/services/brokentree.png",
+        "status": "Aberto",
+        "response": "",
+        "address": "",
+        "longitude": 12.5,
+        "latitude": 15.6
       },
       {
-        "name": "Vias públicas",
-        "profilePic": "assets/img/services/traffic-cone.png",
-        "about": "Corte de árvore.",
-        "services": [
-          {
-            "name": "Obstrução da via",
-            "profilePic": "assets/img/services/traffic-cone.png",
-            "about": "Obstrução da via por árvores e galhos caídos."
-          },
-        ]
-      },
-      {
-        "name": "Jardinagem",
-        "profilePic": "assets/img/services/tulip.png",
-        "about": "Capinação de mato.",
-        "services":[
-          {
-            "name": "Capinação de mato",
-            "profilePic": "assets/img/services/tulip.png",
-            "about": "Capinação de mato."
-          }
-        ]
+        "id": 2,
+        "cityhallservice": {
+          "name": "Plantio de árvore",
+          "profilePic": "assets/img/services/plant-tree.png",
+          "about": "Plantio de árvore."
+        },
+        "description": "Faz dois anos que desde que uma árvore foi removida desta calçada e nenhuma foi plantanda no local.",
+        "date": "20/05/2018",
+        "image": "assets/img/services/holesidewalk.jpg",
+        "status": "Fechado",
+        "response": "O plantio foi realizado no dia 30/05/2018.",
+        "address": "",
+        "longitude": 12.5,
+        "latitude": 15.6
       }
     ];
 
